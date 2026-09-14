@@ -70,7 +70,7 @@ Found a vulnerability in any Continentix product? Please read the [security poli
 ---
 
 <p align="center">
-  <sub>Continentix · Web Wave Developers · Warsaw, Poland · Founded 2026</sub>
+  <sub>Continentix · Web Wave Developers · Spain · Founded 2026</sub>
 </p>
 
 <!--
