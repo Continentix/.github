@@ -1,0 +1,59 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [$default-branch]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: "-D warnings"
+
+jobs:
+  check:
+    name: fmt · clippy · test · deny
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci
+          POSTGRES_DB: ci
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U ci -d ci"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      DATABASE_URL: postgres://ci:ci@localhost:5432/ci
+      SQLX_OFFLINE: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: Format
+        run: cargo fmt --all --check
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked
+      - name: Test
+        run: cargo test --workspace --locked
+      - name: Licence and advisory gate (permissive-only)
+        uses: EmbarkStudios/cargo-deny-action@v2
+        with:
+          command: check licenses advisories bans sources
+# === АННОТАЦИЯ (RU) ===
+# Назначение: шаблон CI для Rust-семейства (Valtrix, DevoraX2 server,
+#   Provata, Sismara, Calcara-core). Появляется в Actions → New workflow →
+#   «By Continentix» у каждого репо организации.
+# Что внутри: fmt, clippy с -D warnings, test, cargo-deny (лицензии
+#   permissive-only по deny.toml репозитория, advisories, bans, sources).
+#   Postgres 17 как service — паритет с прод-мажором.
+# Ключевой факт: SQLX_OFFLINE=true требует закоммиченного .sqlx/ (cargo sqlx
+#   prepare); без него шаг test упадёт — это намеренно.
+# Куда ставится: org-profile/workflow-templates/rust-ci.yml
+# Кто редактирует: Vitalii.

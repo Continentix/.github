@@ -1,0 +1,78 @@
+name: Laravel CI
+
+on:
+  push:
+    branches: [$default-branch]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: pint · phpstan · phpunit (MariaDB 10.11)
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: ci
+          MARIADB_DATABASE: ci
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+      redis:
+        image: valkey/valkey:8-alpine
+        ports: ["6379:6379"]
+    env:
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: "3306"
+      DB_DATABASE: ci
+      DB_USERNAME: root
+      DB_PASSWORD: ci
+      REDIS_HOST: 127.0.0.1
+      CACHE_STORE: redis
+      QUEUE_CONNECTION: sync
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: mbstring, pdo_mysql, redis, intl, bcmath, gd
+          coverage: none
+      - name: Composer install
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Refuse SQLite anywhere
+        run: |
+          if grep -rIn --include=phpunit.xml --include=phpunit.xml.dist --include=*.php --include=*.env* -e 'sqlite' . --exclude-dir=vendor --exclude-dir=node_modules; then
+            echo "::error::SQLite is not permitted in Continentix projects (engine parity rule)"; exit 1; fi
+      - name: Code style
+        run: vendor/bin/pint --test
+      - name: Static analysis
+        run: vendor/bin/phpstan analyse --no-progress
+      - name: Prepare app
+        run: |
+          cp -n .env.example .env || true
+          php artisan key:generate --force
+          php artisan migrate --force
+      - name: Tests
+        run: php artisan test --parallel
+      - name: Licence gate (permissive-only)
+        run: |
+          composer licenses --format=json | php -r '
+            $d=json_decode(stream_get_contents(STDIN),true); $bad=[];
+            foreach($d["dependencies"] as $n=>$p){ foreach($p["license"] as $l){
+              if(preg_match("/GPL|AGPL|LGPL|SSPL/i",$l)) $bad[]="$n ($l)"; } }
+            if($bad){ fwrite(STDERR,"Copyleft dependencies:\n".implode("\n",$bad)."\n"); exit(1);} echo "licences ok\n";'
+# === АННОТАЦИЯ (RU) ===
+# Назначение: шаблон CI для Laravel-семейства (gurojobs, puente, wincase,
+#   veltarra, liminara, startupprojects-ai, multichatbothub, ocula api).
+# Что внутри: MariaDB 10.11 + Valkey как services (паритет с прод),
+#   явный запрет sqlite в конфиге/коде/env, pint, phpstan, artisan test,
+#   проверка лицензий composer на copyleft.
+# Ключевой факт: шаг «Refuse SQLite» — прямое следствие правила портфеля
+#   «база всегда только такая, как на сервере».
+# Куда ставится: org-profile/workflow-templates/laravel-ci.yml
+# Кто редактирует: Vitalii.

@@ -1,0 +1,7 @@
+{
+  "name": "Rust CI (Continentix)",
+  "description": "fmt, clippy (-D warnings), tests against PostgreSQL 17, cargo-deny permissive-only licence gate.",
+  "iconName": "rust-ci",
+  "categories": ["Rust"],
+  "filePatterns": ["Cargo.toml"]
+}

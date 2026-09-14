@@ -1,0 +1,7 @@
+{
+  "name": "Flutter CI (Continentix)",
+  "description": "flutter analyze with fatal warnings, dart format check, flutter test; app dir via FLUTTER_APP_DIR variable.",
+  "iconName": "flutter-ci",
+  "categories": ["Dart", "Flutter"],
+  "filePatterns": ["pubspec.yaml"]
+}

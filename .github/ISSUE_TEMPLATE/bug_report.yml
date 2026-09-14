@@ -1,0 +1,60 @@
+name: Bug report
+description: Something behaves differently from what the documentation or specification says.
+title: "bug: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Security vulnerabilities must NOT be reported here — use a private GitHub Security Advisory (see SECURITY.md).
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      placeholder: v0.3.1 or 3b28b60
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What the spec, README, or reasonable reading of the code says should happen.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: What happens instead. Include exact error text, log lines, or screenshots.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Minimal steps or a failing test. "Sometimes" needs a frequency and an environment.
+      render: shell
+    validations:
+      required: true
+  - type: dropdown
+    id: env
+    attributes:
+      label: Environment
+      options:
+        - Production
+        - Local (Docker / OrbStack)
+        - CI
+        - Mobile device (state model + OS below)
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Device model, OS version, browser, network conditions, related issues.
+# === АННОТАЦИЯ (RU) ===
+# Назначение: форма bug-репорта по умолчанию для всех репо организации.
+# Ключевой факт: обязательные поля — версия, ожидание, факт, репро; без них
+#   issue не принимается (правило «диагностика перед фиксом»).
+# Куда ставится: org-profile/.github/ISSUE_TEMPLATE/bug_report.yml
+# Кто редактирует: Vitalii.

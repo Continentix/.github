@@ -1,0 +1,7 @@
+{
+  "name": "Laravel CI (Continentix)",
+  "description": "Pint, PHPStan, PHPUnit against MariaDB 10.11 + Valkey; SQLite refused; composer licence gate.",
+  "iconName": "laravel-ci",
+  "categories": ["PHP"],
+  "filePatterns": ["artisan", "composer.json"]
+}

@@ -1,0 +1,44 @@
+name: Proposal
+description: A change to behaviour, architecture, or scope. Describe the problem before the solution.
+title: "proposal: "
+labels: ["proposal", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is wrong or missing today, for whom, and what it costs.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: The smallest change that solves the problem. Name the components touched.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: At least one, with the reason it loses.
+    validations:
+      required: true
+  - type: checkboxes
+    id: standard
+    attributes:
+      label: Continentix Standard check
+      options:
+        - label: Introduces no custom cryptography
+          required: true
+        - label: New dependencies (if any) are permissive-licensed and listed above
+          required: true
+        - label: Keeps local / test / production engine parity
+          required: true
+        - label: Can be shipped as one gated change (or the split is described above)
+          required: true
+# === АННОТАЦИЯ (RU) ===
+# Назначение: форма предложения изменения; заставляет описать проблему,
+#   альтернативы и подтвердить соответствие семи воротам стандарта.
+# Куда ставится: org-profile/.github/ISSUE_TEMPLATE/proposal.yml
+# Кто редактирует: Vitalii.

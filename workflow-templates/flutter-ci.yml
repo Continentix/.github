@@ -1,0 +1,48 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [$default-branch]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze-test:
+    name: analyze · test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ vars.FLUTTER_APP_DIR || '.' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter --version
+      - run: flutter pub get
+      - name: Analyze (warnings are errors)
+        run: flutter analyze --fatal-infos --fatal-warnings
+      - name: Format check
+        run: dart format --output=none --set-exit-if-changed .
+      - name: Tests
+        run: flutter test
+      - name: Licence gate (permissive-only)
+        run: |
+          if [ -f tool/check_licenses.dart ]; then
+            dart run tool/check_licenses.dart
+          else
+            echo "::warning::tool/check_licenses.dart not found — add the pub.dev licence checker (see CONTRIBUTING.md)"
+          fi
+# === АННОТАЦИЯ (RU) ===
+# Назначение: шаблон CI для Flutter-приложений (gurojobs/mobile,
+#   puente/mobile, valtrix/mobile/guardian, devoraX2/apps/*).
+# Что внутри: stable-канал, analyze с fatal warnings, format check, test.
+#   Каталог приложения задаётся repo variable FLUTTER_APP_DIR (монорепо).
+# Ключевой факт: у Dart нет штатного licence-gate; шаг ожидает
+#   tool/check_licenses.dart в репо (реализуется на pub.dev API, ~40 строк)
+#   и предупреждает, если его нет.
+# Куда ставится: org-profile/workflow-templates/flutter-ci.yml
+# Кто редактирует: Vitalii.

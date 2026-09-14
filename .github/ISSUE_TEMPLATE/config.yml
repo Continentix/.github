@@ -1,0 +1,13 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/Continentix/.github/security/advisories/new
+    about: Report privately. Never open a public issue for security problems.
+  - name: Commercial and partnership enquiries
+    url: https://continentix.com
+    about: Contact through the website.
+# === АННОТАЦИЯ (RU) ===
+# Назначение: отключает пустые issue и выводит две внешние ссылки
+#   (приватный security-репорт, коммерческие вопросы) в выборе шаблона.
+# Куда ставится: org-profile/.github/ISSUE_TEMPLATE/config.yml
+# Кто редактирует: Vitalii.
