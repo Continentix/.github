@@ -9,7 +9,6 @@
       <stop offset="1" stop-color="#0d63f0"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="1200" fill="#ffffff"/>
   <g transform="translate(360 220)">
     <rect x="6" y="6" width="468" height="468" rx="86" fill="url(#sq)" stroke="#bfe0ff" stroke-width="6"/>
     <circle cx="231" cy="246" r="162" fill="#0b1a33"/>
@@ -20,8 +19,8 @@
 </svg>
 <!--
 === АННОТАЦИЯ (RU) ===
-Назначение файла: логотип-лакап на светлом фоне (квадрат 1200×1200) —
-  знак + «continentix» + «global infrastructure holding».
+Назначение файла: лакап для светлых подложек — тёмный текст, ПРОЗРАЧНЫЙ фон
+  (фон Vitalii ставит сам). Квадрат 1200×1200.
 Куда ставится: /Users/apple/Projects/continentix/org-profile/profile/logo-light.svg
 Кто редактирует: Vitalii.
 -->
