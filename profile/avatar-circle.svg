@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Continentix mark for circular avatars">
+  <defs>
+    <linearGradient id="sq" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a7bff"/>
+      <stop offset="1" stop-color="#0a5be6"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f86ff"/>
+      <stop offset="1" stop-color="#0d63f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#sq)"/>
+  <circle cx="512" cy="512" r="470" fill="none" stroke="#bfe0ff" stroke-width="10"/>
+  <circle cx="482" cy="512" r="300" fill="#0b1a33"/>
+  <circle cx="606" cy="512" r="266" fill="url(#inner)" stroke="#d8ecff" stroke-width="12"/>
+</svg>
+<!--
+=== АННОТАЦИЯ (RU) ===
+Назначение файла: знак для площадок, где аватар режется в КРУГ (личный
+  профиль GitHub, Telegram, LinkedIn): заливка на весь кадр без скруглений,
+  светлое кольцо внутри круга-кропа, серп по центру с запасом.
+Ключевой факт: квадрат-версия (avatar.svg) в круге теряет углы и обводку —
+  поэтому отдельный файл, а не масштабирование.
+Куда ставится: /Users/apple/Projects/continentix/org-profile/profile/avatar-circle.svg
+Кто редактирует: Vitalii.
+-->
