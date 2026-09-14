@@ -4,9 +4,13 @@
       <stop offset="0" stop-color="#0a0f1c"/>
       <stop offset="1" stop-color="#101a30"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#3b82f6"/>
-      <stop offset="1" stop-color="#22d3ee"/>
+    <linearGradient id="sq" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a7bff"/>
+      <stop offset="1" stop-color="#0a5be6"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f86ff"/>
+      <stop offset="1" stop-color="#0d63f0"/>
     </linearGradient>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
@@ -16,26 +20,23 @@
   <g clip-path="url(#frame)">
     <rect width="1280" height="320" fill="url(#bg)"/>
     <rect width="1280" height="320" fill="url(#grid)"/>
-    <circle cx="1080" cy="160" r="150" fill="none" stroke="url(#accent)" stroke-opacity="0.35" stroke-width="1.5"/>
-    <circle cx="1080" cy="160" r="105" fill="none" stroke="url(#accent)" stroke-opacity="0.25" stroke-width="1.5"/>
-    <circle cx="1080" cy="160" r="60" fill="none" stroke="url(#accent)" stroke-opacity="0.18" stroke-width="1.5"/>
-    <path d="M930 160H1230M1080 10V310" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
-    <circle cx="1080" cy="160" r="5" fill="url(#accent)"/>
-    <circle cx="1185" cy="160" r="4" fill="#22d3ee"/>
-    <circle cx="1080" cy="55" r="4" fill="#3b82f6"/>
-    <circle cx="1006" cy="234" r="4" fill="#60a5fa"/>
-    <rect x="80" y="118" width="6" height="84" rx="3" fill="url(#accent)"/>
-    <text x="110" y="168" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="6" fill="#f8fafc">CONTINENTIX</text>
-    <text x="112" y="206" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" letter-spacing="1" fill="#94a3b8">Continent-scale infrastructure — from the first commit.</text>
+    <g transform="translate(80 60)">
+      <rect x="2" y="2" width="196" height="196" rx="36" fill="url(#sq)" stroke="#bfe0ff" stroke-width="2.5"/>
+      <circle cx="96" cy="102" r="67" fill="#0b1a33"/>
+      <circle cx="124" cy="102" r="59" fill="url(#inner)" stroke="#d8ecff" stroke-width="2.8"/>
+    </g>
+    <text x="320" y="152" font-family="Inter, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="600" letter-spacing="-1.5" fill="#f8fafc">continentix</text>
+    <text x="324" y="196" font-family="Inter, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="400" letter-spacing="0.5" fill="#94a3b8">global infrastructure holding</text>
+    <text x="324" y="232" font-family="Inter, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#64748b">Continent-scale infrastructure — from the first commit.</text>
   </g>
 </svg>
 <!--
 === АННОТАЦИЯ (RU) ===
-Назначение файла: баннер публичного профиля организации Continentix.
-Что внутри: тёмный градиент, сетка, три концентрических кольца (континент/узлы),
-  вертикальная акцентная полоса, wordmark и тэглайн. Чистый SVG без внешних ресурсов.
-Ключевой факт: используется в profile/README.md по raw-URL; фон #0a0f1c совпадает
-  с тёмной консольной палитрой Valtrix.
+Назначение файла: баннер профиля организации, согласован со знаком
+  Vitalii (серп из двух кругов в синем скруглённом квадрате).
+Что внутри: тёмный фон с сеткой, знак слева, wordmark «continentix»
+  в нижнем регистре как в концепте, подпись «global infrastructure holding»
+  и тэглайн манифеста строкой ниже.
 Куда ставится: /Users/apple/Projects/continentix/org-profile/profile/banner.svg
 Кто редактирует: Vitalii.
 -->

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Continentix — global infrastructure holding">
+  <defs>
+    <linearGradient id="sq" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a7bff"/>
+      <stop offset="1" stop-color="#0a5be6"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f86ff"/>
+      <stop offset="1" stop-color="#0d63f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="#ffffff"/>
+  <g transform="translate(360 220)">
+    <rect x="6" y="6" width="468" height="468" rx="86" fill="url(#sq)" stroke="#bfe0ff" stroke-width="6"/>
+    <circle cx="231" cy="246" r="162" fill="#0b1a33"/>
+    <circle cx="298" cy="246" r="143" fill="url(#inner)" stroke="#d8ecff" stroke-width="7"/>
+  </g>
+  <text x="600" y="880" text-anchor="middle" font-family="Inter, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="120" font-weight="600" letter-spacing="-2.5" fill="#0b1a33">continentix</text>
+  <text x="600" y="955" text-anchor="middle" font-family="Inter, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="400" letter-spacing="0.5" fill="#5b6472">global infrastructure holding</text>
+</svg>
+<!--
+=== АННОТАЦИЯ (RU) ===
+Назначение файла: логотип-лакап на светлом фоне (квадрат 1200×1200) —
+  знак + «continentix» + «global infrastructure holding».
+Куда ставится: /Users/apple/Projects/continentix/org-profile/profile/logo-light.svg
+Кто редактирует: Vitalii.
+-->
