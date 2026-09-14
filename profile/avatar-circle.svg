@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Continentix mark for circular avatars">
   <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f1c"/>
+      <stop offset="1" stop-color="#101a30"/>
+    </linearGradient>
     <linearGradient id="sq" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#1a7bff"/>
       <stop offset="1" stop-color="#0a5be6"/>
@@ -8,19 +12,23 @@
       <stop offset="0" stop-color="#1f86ff"/>
       <stop offset="1" stop-color="#0d63f0"/>
     </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
   </defs>
-  <rect width="1024" height="1024" fill="url(#sq)"/>
-  <circle cx="512" cy="512" r="470" fill="none" stroke="#bfe0ff" stroke-width="10"/>
-  <circle cx="482" cy="512" r="300" fill="#0b1a33"/>
-  <circle cx="606" cy="512" r="266" fill="url(#inner)" stroke="#d8ecff" stroke-width="12"/>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <rect width="1024" height="1024" fill="url(#grid)"/>
+  <g transform="translate(212 212) scale(1.171875)">
+    <rect x="6" y="6" width="500" height="500" rx="92" fill="url(#sq)" stroke="#bfe0ff" stroke-width="6"/>
+    <circle cx="246" cy="262" r="172" fill="#0b1a33"/>
+    <circle cx="318" cy="262" r="152" fill="url(#inner)" stroke="#d8ecff" stroke-width="7"/>
+  </g>
 </svg>
 <!--
 === АННОТАЦИЯ (RU) ===
-Назначение файла: знак для площадок, где аватар режется в КРУГ (личный
-  профиль GitHub, Telegram, LinkedIn): заливка на весь кадр без скруглений,
-  светлое кольцо внутри круга-кропа, серп по центру с запасом.
-Ключевой факт: квадрат-версия (avatar.svg) в круге теряет углы и обводку —
-  поэтому отдельный файл, а не масштабирование.
+Назначение файла: знак для круглых аватаров (личный профиль GitHub, Telegram):
+  тёмная подложка баннера + тот же скруглённый квадрат со знаком по центру
+  (600 px из 1024 — вписан в круг с запасом). Без кольца, ничего не режется.
 Куда ставится: /Users/apple/Projects/continentix/org-profile/profile/avatar-circle.svg
 Кто редактирует: Vitalii.
 -->
